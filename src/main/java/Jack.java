@@ -5,6 +5,8 @@ public class Jack {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
+        String[] inputList = new String[100];
+        int count = 0;
         System.out.println(line);
         welcome();
         while (true) {
@@ -12,8 +14,12 @@ public class Jack {
             if (command.equals("bye")) {
                 bye();
                 break;
-            } else {
-                echo(command);
+            } else if (command.equals("list")) {
+                list(inputList, count);
+            }
+            else {
+                inputList = add(inputList, count, command);
+                count = count + 1;
             }
         }
     }
@@ -31,9 +37,18 @@ public class Jack {
         System.out.println(line);
     }
 
-    private static void echo(String c) {
+    private static String[] add(String[] list, int count, String c) {
         System.out.println(line);
-        System.out.println(c);
+        System.out.println("added: " + c);
+        System.out.println(line);
+        list[count] = c;
+        return list;
+    }
+    private static void list(String[] list, int count) {
+        System.out.println(line);
+        for (int j = 1; j <= count; j++) {
+            System.out.println(j + ". " + list[j - 1]);
+        }
         System.out.println(line);
     }
 }
