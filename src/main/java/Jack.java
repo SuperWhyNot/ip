@@ -5,7 +5,7 @@ public class Jack {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        String[] inputList = new String[100];
+        Task[] inputList = new Task[100];
         int count = 0;
         System.out.println(line);
         welcome();
@@ -16,8 +16,15 @@ public class Jack {
                 break;
             } else if (command.equals("list")) {
                 list(inputList, count);
-            }
-            else {
+            } else if (command.startsWith("unmark")) {
+                int idx = Integer.parseInt(command.substring(7)) - 1;
+                Task t = inputList[idx];
+                unmark(t);
+            } else if (command.startsWith("mark")) {
+                int idx = Integer.parseInt(command.substring(5)) - 1;
+                Task t = inputList[idx];
+                mark(t);
+            } else {
                 inputList = add(inputList, count, command);
                 count = count + 1;
             }
@@ -37,18 +44,35 @@ public class Jack {
         System.out.println(line);
     }
 
-    private static String[] add(String[] list, int count, String c) {
+    private static Task[] add(Task[] list, int count, String c) {
         System.out.println(line);
         System.out.println("added: " + c);
         System.out.println(line);
-        list[count] = c;
+        list[count] = new Task(c);
         return list;
     }
-    private static void list(String[] list, int count) {
+    private static void list(Task[] list, int count) {
         System.out.println(line);
+        System.out.println("Here are the tasks in your list:");
         for (int j = 1; j <= count; j++) {
-            System.out.println(j + ". " + list[j - 1]);
+            System.out.println(j + "." + list[j - 1].toString());
         }
         System.out.println(line);
     }
+    private static void mark(Task t) {
+        System.out.println(line);
+        System.out.println("Nice! I've marked this task as done:");
+        t.mark();
+        System.out.println("  " + t);
+        System.out.println(line);
+    }
+
+    private static void unmark(Task t) {
+        System.out.println(line);
+        System.out.println("OK, I've marked this task as not done yet:");
+        t.unmark();
+        System.out.println("  " + t);
+        System.out.println(line);
+    }
+
 }
