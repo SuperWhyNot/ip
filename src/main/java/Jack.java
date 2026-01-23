@@ -11,46 +11,71 @@ public class Jack {
         welcome();
         while (true) {
             String command = input.nextLine();
-            if (command.equals("bye")) {
-                bye();
-                break;
-            } else if (command.equals("list")) {
-                list(inputList, count);
-            } else if (command.startsWith("unmark ")) {
-                int idx = Integer.parseInt(command.substring(7)) - 1;
-                Task t = inputList[idx];
-                unmark(t);
-            } else if (command.startsWith("mark ")) {
-                int idx = Integer.parseInt(command.substring(5)) - 1;
-                Task t = inputList[idx];
-                mark(t);
+            try {
+                if (command.equals("bye")) {
+                    bye();
+                    break;
+                } else if (command.equals("list")) {
+                    list(inputList, count);
+                } else if (command.startsWith("unmark ")) {
+                    int idx = Integer.parseInt(command.substring(7)) - 1;
+                    if (idx < 0 || idx >= count) {
+                        throw new Excep("no such task number");
+                    }
+                    Task t = inputList[idx];
+                    unmark(t);
+                } else if (command.startsWith("mark ")) {
+                    int idx = Integer.parseInt(command.substring(5)) - 1;
+                    if (idx < 0 || idx >= count) {
+                        throw new Excep("no such task number");
+                    }
+                    Task t = inputList[idx];
+                    mark(t);
 
 
-            } else if (command.startsWith("todo ")) {
-                String text = command.substring(5);
-                inputList = todo(inputList, count, text);
-                count = count + 1;
-            } else if (command.startsWith("event ")) {
-                String task = command.substring(6);
-                String[] temp = task.split(" /", 3);
-                String text = temp[0];
-                String tempstart = temp[1];
-                String start = tempstart.substring(5);
-                String tempend = temp[2];
-                String end = tempend.substring(3);
-                inputList = event(inputList, count, text, start, end);
-                count = count + 1;
-            } else if (command.startsWith("deadline ")) {
-                String task = command.substring(9);
-                String[] temp = task.split(" /", 2);
-                String text = temp[0];
-                String tempdl = temp[1];
-                String dl = tempdl.substring(3);
-                inputList = deadline(inputList, count, text, dl);
-                count = count + 1;
-            } else {
-                inputList = add(inputList, count, command);
-                count = count + 1;
+                } else if (command.startsWith("todo ")) {
+                    String text = command.substring(5);
+                    if (text.isEmpty()) {
+                        throw new Excep("nothing todo i also want");
+                    }
+                    inputList = todo(inputList, count, text);
+                    count = count + 1;
+                } else if (command.startsWith("event ")) {
+                    String task = command.substring(6);
+                    if (task.isEmpty()) {
+                        throw new Excep("no event i also want");
+                    } else if (!task.contains("from") || (!task.contains("to"))) {
+                        throw new Excep("wrong format");
+                    }
+                    String[] temp = task.split(" /", 3);
+                    String text = temp[0];
+                    String tempstart = temp[1];
+                    String start = tempstart.substring(5);
+                    String tempend = temp[2];
+                    String end = tempend.substring(3);
+                    inputList = event(inputList, count, text, start, end);
+                    count = count + 1;
+
+                } else if (command.startsWith("deadline ")) {
+                    String task = command.substring(9);
+                    if (task.isEmpty()) {
+                        throw new Excep("no deadline i also want");
+                    } else if (!task.contains("by")) {
+                        throw new Excep("wrong format");
+                    }
+                    String[] temp = task.split(" /", 2);
+                    String text = temp[0];
+                    String tempdl = temp[1];
+                    String dl = tempdl.substring(3);
+                    inputList = deadline(inputList, count, text, dl);
+                    count = count + 1;
+                } else {
+                    throw new Excep("idk your command");
+                }
+            } catch (Excep e) {
+                System.out.println(line);
+                System.out.println(e.getMessage());
+                System.out.println(line);
             }
         }
     }
