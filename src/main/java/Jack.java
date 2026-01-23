@@ -34,15 +34,18 @@ public class Jack {
                 String task = command.substring(6);
                 String[] temp = task.split(" /", 3);
                 String text = temp[0];
-                String start = temp[1];
-                String end = temp[2];
+                String tempstart = temp[1];
+                String start = tempstart.substring(5);
+                String tempend = temp[2];
+                String end = tempend.substring(3);
                 inputList = event(inputList, count, text, start, end);
                 count = count + 1;
             } else if (command.startsWith("deadline ")) {
                 String task = command.substring(9);
                 String[] temp = task.split(" /", 2);
                 String text = temp[0];
-                String dl = temp[1];
+                String tempdl = temp[1];
+                String dl = tempdl.substring(3);
                 inputList = deadline(inputList, count, text, dl);
                 count = count + 1;
             } else {
