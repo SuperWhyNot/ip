@@ -10,8 +10,31 @@ public class Event extends Task {
 
 
     @Override
-    public String toString() {
-        return "[E]" + super.toString() + " (from: " + start + " to: " + end + ")";
+    public String toString() {return "["+taskName()+"]" + super.toString() + " (from: " + start + " to: " + end + ")";}
+
+    @Override
+    public String taskName(){return "E";}
+
+    public static Event taskToEvent(String task) throws Excep{
+        if (task.isEmpty()) {
+            throw new Excep("no event i also want");
+        } else if (!task.contains("from") || (!task.contains("to"))) {
+            throw new Excep("wrong format");
+        }
+        String[] temp = task.split(" /", 3);
+        String text = temp[0];
+        String tempstart = temp[1];
+        String start = tempstart.substring(5);
+        String tempend = temp[2];
+        String end = tempend.substring(3);
+        Event t = new Event(text,start,end);
+        return t;
     }
 
+    public String toTask(){
+        return this.getDescription() + " /from "+this.getStart()+" /to "+this.getEnd();
+    }
+
+    public String getStart(){return start;}
+    public String getEnd(){return end;}
 }

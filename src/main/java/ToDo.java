@@ -6,8 +6,13 @@ public class ToDo extends Task{
 
     @Override
     public String toString() {
-        return "[T]" + super.toString();
+        return "["+taskName()+"]" + super.toString();
     }
 
+    @Override
+    public String taskName(){return "T";}
 
+    public String serialize(){
+        return String.join(" | ",this.isDone?"1":"0",this.description);
+    }
 }
