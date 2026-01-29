@@ -11,7 +11,7 @@ public class Event extends Task {
             this.start = DateTimeTool.formatDateTime(startTime);
 
 
-            LocalDateTime endTime = DateTimeTool.parseDateTime(start);
+            LocalDateTime endTime = DateTimeTool.parseDateTime(end);
             this.end = DateTimeTool.formatDateTime(endTime);
         }catch (Excep e){
             System.out.println(e.getMessage());
