@@ -70,11 +70,11 @@ public class Storage {
         return list;
     }
 
-    private String serialize(Task task){
+    public static String serialize(Task task){
         return String.join(separator,task.taskName(),task.isDone()?"1":"0",task.toTask());
     }
 
-    private Task deserialize(String line) throws Exception{
+    public static Task deserialize(String line) throws Exception{
         String[] args = line.split(" \\| ");
         String type = args[0];
         boolean mark = args[1].equals("0")?false:true;

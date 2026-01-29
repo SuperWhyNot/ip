@@ -16,6 +16,7 @@ bin/
 /text-ui-test/ACTUAL.TXT
 text-ui-test/EXPECTED-UNIX.TXT
 /data
+/app/data/
 
 # Ignore Gradle project-specific cache directory
 .gradle
