@@ -5,11 +5,11 @@ import java.util.ArrayList;
 /**
  * Save the tasks in the hard disk automatically whenever the task list changes. Load the data from the hard disk when the chatbot starts up. You may hard-code the file name and relative path from the project root e.g., ./data/duke.txt
  */
-public class TaskData {
+public class Storage {
 
     private static String separator = " | ";
     private File targetFile;
-    public TaskData(String path) throws Excep,IOException{
+    public Storage(String path) throws Excep,IOException{
 
         targetFile = new File(path);
 
@@ -31,7 +31,7 @@ public class TaskData {
         }
     }
 
-    public void save(ArrayList<Task> inputList) throws IOException{
+    public void save(TaskList inputList) throws IOException{
         try{
             FileOutputStream os = new FileOutputStream(targetFile.getPath(), false); // clean and writer
             OutputStreamWriter ow = new OutputStreamWriter(os, StandardCharsets.UTF_8);
@@ -49,8 +49,8 @@ public class TaskData {
         }
     }
 
-    public ArrayList<Task> read() throws FileNotFoundException,IOException{
-        ArrayList<Task> list = new ArrayList<Task>();
+    public TaskList read() throws FileNotFoundException,IOException{
+        TaskList list = new TaskList();
         FileReader fileRead = new FileReader(targetFile.getPath());
         BufferedReader read = new BufferedReader(fileRead);
         String currentLine="";
