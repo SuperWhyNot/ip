@@ -22,7 +22,7 @@ public class ToDo extends Task {
      */
     @Override
     public String toString() {
-        return "["+taskName()+"]" + super.toString();
+        return "[" + taskName() + "]" + super.toString();
     }
 
     /**
@@ -30,14 +30,14 @@ public class ToDo extends Task {
      * @return "T" for todo tasks.
      */
     @Override
-    public String taskName(){return "T";}
+    public String taskName() { return "T"; }
 
     /**
      * Serializes the todo task to a string format for storage.
      * @return A string representation of the todo task for storage.
      */
-    public String serialize(){
-        return String.join(" | ",this.isDone?"1":"0",this.description);
+    public String serialize() {
+        return String.join(" | ", this.isDone ? "1" : "0", this.description);
     }
 
     /**
@@ -47,7 +47,6 @@ public class ToDo extends Task {
      * @throws Excep If the text is empty.
      */
     public static ToDo taskToToDo(String text) throws Excep {
-
         if (text.isEmpty()) {
             throw new Excep("nothing todo i also want");
         }

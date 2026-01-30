@@ -21,10 +21,10 @@ public class Deadline extends Task {
      */
     public Deadline(String description, String due) throws Excep {
         super(description);
-        try{
+        try {
             LocalDateTime time = DateTimeTool.parseDateTime(due);
             this.due = DateTimeTool.formatDateTime(time);
-        }catch (Excep e){
+        } catch (Excep e) {
             System.out.println(e.getMessage());
             this.due = due;
         }
@@ -36,7 +36,7 @@ public class Deadline extends Task {
      */
     @Override
     public String toString() {
-        return "["+taskName()+"]" + super.toString() + " (by: " + due + ")";
+        return "[" + taskName() + "]" + super.toString() + " (by: " + due + ")";
     }
 
     /**
@@ -44,13 +44,13 @@ public class Deadline extends Task {
      * @return "D" for deadline tasks.
      */
     @Override
-    public String taskName(){return "D";}
+    public String taskName() { return "D"; }
 
     /**
      * Returns the due date of the deadline task.
      * @return The due date of the deadline task.
      */
-    public String getDue(){return due;}
+    public String getDue() { return due; }
 
     /**
      * Creates a new Deadline task from the given task string.
@@ -58,7 +58,7 @@ public class Deadline extends Task {
      * @return A new Deadline task with the specified description and due date.
      * @throws Excep If the task string is empty or does not contain "by".
      */
-    public static Deadline taskToDeadline(String task) throws Excep{
+    public static Deadline taskToDeadline(String task) throws Excep {
         if (task.isEmpty()) {
             throw new Excep("no deadline i also want");
         } else if (!task.contains("by")) {
@@ -68,15 +68,14 @@ public class Deadline extends Task {
         String text = temp[0];
         String tempdl = temp[1];
         String dl = tempdl.substring(3);
-        return new Deadline(text,dl);
+        return new Deadline(text, dl);
     }
 
     /**
      * Returns the task information as a string for storage.
      * @return A string containing the description and due date of the task.
      */
-    public String toTask(){
-        return this.getDescription() + " /by "+this.getDue();
+    public String toTask() {
+        return this.getDescription() + " /by " + this.getDue();
     }
-
 }

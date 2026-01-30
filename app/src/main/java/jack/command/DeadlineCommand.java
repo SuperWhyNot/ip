@@ -9,15 +9,15 @@ import jack.ui.Ui;
  * Represents a command to add a deadline task in the Jack application.
  * Extends the Command class.
  */
-public class DeadlineCommand extends Command{
+public class DeadlineCommand extends Command {
     private Deadline deadline;
 
     /**
      * Constructs a new DeadlineCommand with the specified deadline task.
      * @param deadline The deadline task to add.
      */
-    public DeadlineCommand(Deadline deadline){
-        this.deadline=deadline;
+    public DeadlineCommand(Deadline deadline) {
+        this.deadline = deadline;
     }
 
     /**

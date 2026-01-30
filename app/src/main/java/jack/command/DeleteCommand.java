@@ -10,15 +10,15 @@ import jack.ui.Ui;
  * Represents a command to delete a task from the Jack application.
  * Extends the Command class.
  */
-public class DeleteCommand extends Command{
+public class DeleteCommand extends Command {
     private int idx;
     
     /**
      * Constructs a new DeleteCommand with the specified task index.
      * @param idx The index of the task to delete (1-based).
      */
-    public DeleteCommand(int idx){
-        this.idx=idx - 1;
+    public DeleteCommand(int idx) {
+        this.idx = idx - 1;
     }
     
     /**
@@ -29,13 +29,13 @@ public class DeleteCommand extends Command{
      * @throws Exception If the task index is invalid or an error occurs during execution.
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage)  throws Exception {
-        if(idx < 1 || idx >= tasks.size()){
+    public void execute(TaskList tasks, Ui ui, Storage storage) throws Exception {
+        if (idx < 1 || idx >= tasks.size()) {
             throw new Excep("no such task number");
         }
         Task t = tasks.get(idx);
         tasks.remove(idx);
         storage.save(tasks);
-        ui.delete(tasks,t);
+        ui.delete(tasks, t);
     }
 }

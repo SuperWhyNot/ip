@@ -22,14 +22,13 @@ public class Storage {
      * @throws Excep If the file cannot be created or if the path is not a file.
      * @throws IOException If an I/O error occurs when creating directories.
      */
-    public Storage(String path) throws Excep,IOException{
-
+    public Storage(String path) throws Excep, IOException {
         targetFile = new File(path);
 
         if (!targetFile.exists()) {
             File parentDir = targetFile.getParentFile();
             if (parentDir != null && !parentDir.exists()) {
-                if(!parentDir.mkdirs()){
+                if (!parentDir.mkdirs()) {
                     throw new IOException();
                 }
             }
@@ -39,7 +38,7 @@ public class Storage {
                 throw new Excep("Create File Fail");
             }
         }
-        if(!targetFile.isFile()){
+        if (!targetFile.isFile()) {
             throw new Excep("Path is not a file");
         }
     }
@@ -49,19 +48,19 @@ public class Storage {
      * @param inputList The task list to save.
      * @throws IOException If an I/O error occurs when writing to the file.
      */
-    public void save(TaskList inputList) throws IOException{
-        try{
+    public void save(TaskList inputList) throws IOException {
+        try {
             FileOutputStream os = new FileOutputStream(targetFile.getPath(), false); // clean and writer
             OutputStreamWriter ow = new OutputStreamWriter(os, StandardCharsets.UTF_8);
             BufferedWriter bw = new BufferedWriter(ow);
-            for(int i = 0;i<inputList.size();i++){
+            for (int i = 0; i < inputList.size(); i++) {
                 Task task = inputList.get(i);
                 bw.write(serialize(task));
                 bw.newLine();
             }
             bw.flush();
             bw.close();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             throw e;
         }
@@ -73,15 +72,15 @@ public class Storage {
      * @throws FileNotFoundException If the storage file is not found.
      * @throws IOException If an I/O error occurs when reading from the file.
      */
-    public TaskList read() throws FileNotFoundException,IOException{
+    public TaskList read() throws FileNotFoundException, IOException {
         TaskList list = new TaskList();
         FileReader fileRead = new FileReader(targetFile.getPath());
         BufferedReader read = new BufferedReader(fileRead);
-        String currentLine="";
-        while ((currentLine = read.readLine()) != null){
-            try{
+        String currentLine = "";
+        while ((currentLine = read.readLine()) != null) {
+            try {
                 list.add(deserialize(currentLine));
-            }catch (Exception e){
+            } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
         }
@@ -95,8 +94,8 @@ public class Storage {
      * @param task The task to serialize.
      * @return A string representation of the task in storage format.
      */
-    public static String serialize(Task task){
-        return String.join(separator,task.taskName(),task.isDone()?"1":"0",task.toTask());
+    public static String serialize(Task task) {
+        return String.join(separator, task.taskName(), task.isDone() ? "1" : "0", task.toTask());
     }
 
     /**
@@ -105,22 +104,22 @@ public class Storage {
      * @return A Task object created from the string.
      * @throws Exception If the string format is invalid or the task type is unknown.
      */
-    public static Task deserialize(String line) throws Exception{
-        String[] args = line.split(" \\| ");
+    public static Task deserialize(String line) throws Exception {
+        String[] args = line.split(" \\|");
         String type = args[0];
-        boolean mark = args[1].equals("0")?false:true;
+        boolean mark = args[1].equals("0") ? false : true;
         String command = args[2];
         Task task;
-        if(type.equals("E")){
+        if (type.equals("E")) {
             task = Event.taskToEvent(command);
         } else if (type.equals("D")) {
             task = Deadline.taskToDeadline(command);
-        }else if (type.equals("T")) {
+        } else if (type.equals("T")) {
             task = ToDo.taskToToDo(command);
-        } else{
+        } else {
             throw new Exception("unknown data type");
         }
-        if(mark){
+        if (mark) {
             task.mark();
         }
         return task;

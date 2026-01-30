@@ -34,26 +34,26 @@ public class Parser {
         Command cmd;
         if (tag.equalsIgnoreCase("bye")) {
             cmd = new ByeCommand();
-        }else if (tag.equalsIgnoreCase("list")) {
+        } else if (tag.equalsIgnoreCase("list")) {
             cmd = new ListCommand();
-        }else if (tag.equalsIgnoreCase("unmark")) {
+        } else if (tag.equalsIgnoreCase("unmark")) {
             int idx = Integer.parseInt(taskStr);
             cmd = new UnmarkCommand(idx);
-        }else if (tag.equalsIgnoreCase("mark")) {
+        } else if (tag.equalsIgnoreCase("mark")) {
             int idx = Integer.parseInt(taskStr);
             cmd = new MarkCommand(idx);
-        }else if (tag.equalsIgnoreCase("delete")) {
+        } else if (tag.equalsIgnoreCase("delete")) {
             int idx = Integer.parseInt(taskStr);
             cmd = new DeleteCommand(idx);
-        }else if (tag.equalsIgnoreCase("todo")) {
+        } else if (tag.equalsIgnoreCase("todo")) {
             cmd = new TodoCommand(taskStr);
-        }else if (tag.equalsIgnoreCase("event")) {
+        } else if (tag.equalsIgnoreCase("event")) {
             Event event = Event.taskToEvent(taskStr);
             cmd = new EventCommand(event);
-        }else if (tag.equalsIgnoreCase("deadline")) {
+        } else if (tag.equalsIgnoreCase("deadline")) {
             Deadline deadline = Deadline.taskToDeadline(taskStr);
             cmd = new DeadlineCommand(deadline);
-        }else{
+        } else {
             throw new Excep("Wrong command");
         }
         return cmd;

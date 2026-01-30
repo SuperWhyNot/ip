@@ -8,7 +8,7 @@ import jack.ui.Ui;
  * The abstract base class for all commands in the Jack application.
  * Defines the basic interface for commands, including execution and exit status.
  */
-abstract public class Command {
+public abstract class Command {
     protected boolean isExit = false;
 
     /**
@@ -18,12 +18,11 @@ abstract public class Command {
      * @param storage The storage to save/load tasks.
      * @throws Exception If an error occurs during execution.
      */
-    abstract public void execute(TaskList tasks, Ui ui, Storage storage) throws Exception;
+    public abstract void execute(TaskList tasks, Ui ui, Storage storage) throws Exception;
 
     /**
      * Returns whether the command is an exit command.
      * @return true if the command is an exit command, false otherwise.
      */
-    public boolean isExit(){return  this.isExit;}
-
+    public boolean isExit() { return this.isExit; }
 }

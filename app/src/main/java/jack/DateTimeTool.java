@@ -29,12 +29,11 @@ public class DateTimeTool {
      * @param time The LocalDateTime object to format.
      * @return A formatted string representation of the date and time.
      */
-    public static String formatDateTime(LocalDateTime time){
-
-        if(time.getSecond()==0 && time.getMinute()==0){
+    public static String formatDateTime(LocalDateTime time) {
+        if (time.getSecond() == 0 && time.getMinute() == 0) {
             return time.format(timeFormatH);
         }
-        if(time.getSecond()==0){
+        if (time.getSecond() == 0) {
             return time.format(timeFormatM);
         }
         return time.format(timeFormat);
@@ -47,12 +46,12 @@ public class DateTimeTool {
             "dd/MM/yyyy HH:mm:ss", "dd/MM/yyyy",
             "d/M/yyyy HH:mm:ss", "d/M/yyyy",
             "d/M/yyyy hhmma", "d/M/yyyy HHmm",
-            "MMM dd yyyy","MMM dd yyyy HH:mm:ss",
-            "MMM dd yyyy HH:mm","MMM dd yyyy hh:mma","MMM dd yyyy hh:mm a",
-            "MMM dd yyyy HH.mm","MMM dd yyyy hh.mma","MMM dd yyyy hh.mm a",
-            "MMM dd yyyy H.m","MMM dd yyyy h.ma","MMM dd yyyy h.m a",
-            "MMM dd yyyy H","MMM dd yyyy ha","MMM dd yyyy h a",
-            "dd-MMM-yyyy HH:mm:ss", "dd-MMM-yyyy","MMM dd yyyy","MMM dd yyyy HH:mm:ss"
+            "MMM dd yyyy", "MMM dd yyyy HH:mm:ss",
+            "MMM dd yyyy HH:mm", "MMM dd yyyy hh:mma", "MMM dd yyyy hh:mm a",
+            "MMM dd yyyy HH.mm", "MMM dd yyyy hh.mma", "MMM dd yyyy hh.mm a",
+            "MMM dd yyyy H.m", "MMM dd yyyy h.ma", "MMM dd yyyy h.m a",
+            "MMM dd yyyy H", "MMM dd yyyy ha", "MMM dd yyyy h a",
+            "dd-MMM-yyyy HH:mm:ss", "dd-MMM-yyyy", "MMM dd yyyy", "MMM dd yyyy HH:mm:ss"
     };
 
     /**
@@ -72,7 +71,7 @@ public class DateTimeTool {
         return Arrays.stream(PATTERNS)
                 .map(DateTimeFormatter::ofPattern)
                 .map(formatter -> {
-                    formatter=formatter.withLocale(Locale.ENGLISH);
+                    formatter = formatter.withLocale(Locale.ENGLISH);
                     try {
                         // parse LocalDateTime
                         return LocalDateTime.parse(tStr, formatter);

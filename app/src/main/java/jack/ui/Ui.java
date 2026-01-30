@@ -14,7 +14,7 @@ public class Ui {
     /**
      * Displays a horizontal line separator.
      */
-    public void showLine(){
+    public void showLine() {
         System.out.println(line);
     }
 
@@ -62,7 +62,7 @@ public class Ui {
      * @param list The current task list.
      * @param t The task that was deleted.
      */
-    public void delete(TaskList list, Task t){
+    public void delete(TaskList list, Task t) {
         System.out.println(line);
         System.out.println("Noted. I've removed this task:");
         System.out.println("  " + t);
@@ -114,7 +114,7 @@ public class Ui {
      * Displays the task that was marked as done and a line separator.
      * @param t The task that was marked as done.
      */
-    public void markSuccess(Task t){
+    public void markSuccess(Task t) {
         System.out.println("  " + t);
         System.out.println(line);
     }
@@ -140,10 +140,27 @@ public class Ui {
      * Displays an error message to the user.
      * @param massage The error message to display.
      */
-    public void showError(String massage){
+    public void showError(String massage) {
         System.out.println(line);
         System.out.println(massage);
         System.out.println(line);
     }
 
+    /**
+     * Displays tasks that match the given keyword.
+     * @param list The task list to search in.
+     * @param keyword The keyword to search for.
+     */
+    public void find(TaskList list, String keyword) {
+        System.out.println(line);
+        System.out.println("Here are the matching tasks in your list:");
+        int count = 1;
+        for (Task task : list) {
+            if (task.getDescription().contains(keyword)) {
+                System.out.println(count + "." + task.toString());
+                count++;
+            }
+        }
+        System.out.println(line);
+    }
 }

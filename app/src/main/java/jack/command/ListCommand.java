@@ -8,7 +8,7 @@ import jack.ui.Ui;
  * Represents a command to list all tasks in the Jack application.
  * Extends the Command class.
  */
-public class ListCommand extends Command{
+public class ListCommand extends Command {
     /**
      * Executes the list command, which displays all tasks in the task list.
      * @param tasks The task list to display.
@@ -17,7 +17,7 @@ public class ListCommand extends Command{
      * @throws Exception If an error occurs during execution.
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage)  throws Exception{
+    public void execute(TaskList tasks, Ui ui, Storage storage) throws Exception {
         ui.list(tasks);
     }
 }

@@ -10,14 +10,14 @@ import jack.ui.Ui;
  * Represents a command to mark a task as done in the Jack application.
  * Extends the Command class.
  */
-public class MarkCommand extends Command{
+public class MarkCommand extends Command {
     private int idx;
     
     /**
      * Constructs a new MarkCommand with the specified task index.
      * @param idx The index of the task to mark as done (1-based).
      */
-    public MarkCommand(int idx){
+    public MarkCommand(int idx) {
         this.idx = idx - 1;
     }
     
@@ -30,7 +30,7 @@ public class MarkCommand extends Command{
      */
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) throws Exception {
-        if(idx < 1 || idx >= tasks.size()){
+        if (idx < 1 || idx >= tasks.size()) {
             throw new Excep("no such task number");
         }
         Task t = tasks.get(idx);

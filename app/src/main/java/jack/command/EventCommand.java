@@ -9,15 +9,15 @@ import jack.ui.Ui;
  * Represents a command to add an event task in the Jack application.
  * Extends the Command class.
  */
-public class EventCommand extends Command{
+public class EventCommand extends Command {
     private Event event;
 
     /**
      * Constructs a new EventCommand with the specified event task.
      * @param event The event task to add.
      */
-    public EventCommand(Event event){
-        this.event=event;
+    public EventCommand(Event event) {
+        this.event = event;
     }
 
     /**
