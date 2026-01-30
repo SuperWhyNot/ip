@@ -6,7 +6,8 @@ import java.util.ArrayList;
 
 public class Ui {
     private static final String line = "____________________________________________________________";
-    public void showLine(){
+    
+    public void showLine() {
         System.out.println(line);
     }
 
@@ -33,7 +34,8 @@ public class Ui {
         System.out.println(line);
         System.out.println("Now you have " + list.size() + " tasks in the list.");
     }
-    public void delete(TaskList list, Task t){
+    
+    public void delete(TaskList list, Task t) {
         System.out.println(line);
         System.out.println("Noted. I've removed this task:");
         System.out.println("  " + t);
@@ -62,11 +64,13 @@ public class Ui {
         }
         System.out.println(line);
     }
+    
     public void mark() {
         System.out.println(line);
         System.out.println("Nice! I've marked this task as done:");
     }
-    public void markSuccess(Task t){
+    
+    public void markSuccess(Task t) {
         System.out.println("  " + t);
         System.out.println(line);
     }
@@ -75,16 +79,15 @@ public class Ui {
         System.out.println(line);
         System.out.println("OK, I've marked this task as not done yet:");
     }
+    
     public void unmarkSuccess(Task t) {
-
         System.out.println("  " + t);
         System.out.println(line);
     }
 
-    public void showError(String massage){
+    public void showError(String massage) {
         System.out.println(line);
         System.out.println(massage);
         System.out.println(line);
     }
-
 }

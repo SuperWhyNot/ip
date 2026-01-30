@@ -5,11 +5,11 @@ import jack.task.Deadline;
 import jack.task.TaskList;
 import jack.ui.Ui;
 
-public class DeadlineCommand extends Command{
+public class DeadlineCommand extends Command {
     private Deadline deadline;
 
-    public DeadlineCommand(Deadline deadline){
-        this.deadline=deadline;
+    public DeadlineCommand(Deadline deadline) {
+        this.deadline = deadline;
     }
 
     @Override

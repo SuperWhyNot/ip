@@ -1,6 +1,6 @@
 package jack.task;
 
-public  class Task {
+public class Task {
     protected String description;
     protected boolean isDone;
 
@@ -26,19 +26,17 @@ public  class Task {
         this.isDone = false;
     }
 
-    public boolean isDone(){return isDone;}
+    public boolean isDone() { return isDone; }
 
-    public  String taskName(){return "N";}
+    public String taskName() { return "N"; }
 
-    public String getDescription(){return description;}
+    public String getDescription() { return description; }
 
-    public String toTask(){
+    public String toTask() {
         return this.getDescription();
     }
 
     public void delete() {
 
     }
-
-
 }

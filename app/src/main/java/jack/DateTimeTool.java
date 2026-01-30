@@ -12,16 +12,17 @@ public class DateTimeTool {
     private static DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("MMM dd yyyy h.mm.ssa").withLocale(Locale.ENGLISH);
     private static DateTimeFormatter timeFormatM = DateTimeFormatter.ofPattern("MMM dd yyyy h.mma").withLocale(Locale.ENGLISH);
     private static DateTimeFormatter timeFormatH = DateTimeFormatter.ofPattern("MMM dd yyyy ha").withLocale(Locale.ENGLISH);
-    public static String formatDateTime(LocalDateTime time){
-
-        if(time.getSecond()==0 && time.getMinute()==0){
+    
+    public static String formatDateTime(LocalDateTime time) {
+        if (time.getSecond() == 0 && time.getMinute() == 0) {
             return time.format(timeFormatH);
         }
-        if(time.getSecond()==0){
+        if (time.getSecond() == 0) {
             return time.format(timeFormatM);
         }
         return time.format(timeFormat);
     }
+    
     private static final String[] PATTERNS = {
             "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd", "yyyy/MM/dd HH:mm:ss", "yyyy/MM/dd",
             "yyyy_MM_dd HH:mm:ss", "yyyy_MM_dd", "yyyyMMddHHmmss", "yyyyMMdd",
@@ -29,12 +30,12 @@ public class DateTimeTool {
             "dd/MM/yyyy HH:mm:ss", "dd/MM/yyyy",
             "d/M/yyyy HH:mm:ss", "d/M/yyyy",
             "d/M/yyyy hhmma", "d/M/yyyy HHmm",
-            "MMM dd yyyy","MMM dd yyyy HH:mm:ss",
-            "MMM dd yyyy HH:mm","MMM dd yyyy hh:mma","MMM dd yyyy hh:mm a",
-            "MMM dd yyyy HH.mm","MMM dd yyyy hh.mma","MMM dd yyyy hh.mm a",
-            "MMM dd yyyy H.m","MMM dd yyyy h.ma","MMM dd yyyy h.m a",
-            "MMM dd yyyy H","MMM dd yyyy ha","MMM dd yyyy h a",
-            "dd-MMM-yyyy HH:mm:ss", "dd-MMM-yyyy","MMM dd yyyy","MMM dd yyyy HH:mm:ss"
+            "MMM dd yyyy", "MMM dd yyyy HH:mm:ss",
+            "MMM dd yyyy HH:mm", "MMM dd yyyy hh:mma", "MMM dd yyyy hh:mm a",
+            "MMM dd yyyy HH.mm", "MMM dd yyyy hh.mma", "MMM dd yyyy hh.mm a",
+            "MMM dd yyyy H.m", "MMM dd yyyy h.ma", "MMM dd yyyy h.m a",
+            "MMM dd yyyy H", "MMM dd yyyy ha", "MMM dd yyyy h a",
+            "dd-MMM-yyyy HH:mm:ss", "dd-MMM-yyyy", "MMM dd yyyy", "MMM dd yyyy HH:mm:ss"
     };
 
     public static LocalDateTime parseDateTime(String timeStr) throws Excep {
@@ -47,7 +48,7 @@ public class DateTimeTool {
         return Arrays.stream(PATTERNS)
                 .map(DateTimeFormatter::ofPattern)
                 .map(formatter -> {
-                    formatter=formatter.withLocale(Locale.ENGLISH);
+                    formatter = formatter.withLocale(Locale.ENGLISH);
                     try {
                         // parse LocalDateTime
                         return LocalDateTime.parse(tStr, formatter);

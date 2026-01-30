@@ -11,28 +11,28 @@ public class Event extends Task {
 
     public Event(String description, String start, String end) {
         super(description);
-        try{
+        try {
             LocalDateTime startTime = DateTimeTool.parseDateTime(start);
             this.start = DateTimeTool.formatDateTime(startTime);
 
-
             LocalDateTime endTime = DateTimeTool.parseDateTime(end);
             this.end = DateTimeTool.formatDateTime(endTime);
-        }catch (Excep e){
+        } catch (Excep e) {
             System.out.println(e.getMessage());
             this.start = start;
             this.end = end;
         }
     }
 
+    @Override
+    public String toString() {
+        return "[" + taskName() + "]" + super.toString() + " (from: " + start + " to: " + end + ")";
+    }
 
     @Override
-    public String toString() {return "["+taskName()+"]" + super.toString() + " (from: " + start + " to: " + end + ")";}
+    public String taskName() { return "E"; }
 
-    @Override
-    public String taskName(){return "E";}
-
-    public static Event taskToEvent(String task) throws Excep{
+    public static Event taskToEvent(String task) throws Excep {
         if (task.isEmpty()) {
             throw new Excep("no event i also want");
         } else if (!task.contains("from") || (!task.contains("to"))) {
@@ -44,14 +44,14 @@ public class Event extends Task {
         String start = tempstart.substring(5);
         String tempend = temp[2];
         String end = tempend.substring(3);
-        Event t = new Event(text,start,end);
+        Event t = new Event(text, start, end);
         return t;
     }
 
-    public String toTask(){
-        return this.getDescription() + " /from "+this.getStart()+" /to "+this.getEnd();
+    public String toTask() {
+        return this.getDescription() + " /from " + this.getStart() + " /to " + this.getEnd();
     }
 
-    public String getStart(){return start;}
-    public String getEnd(){return end;}
+    public String getStart() { return start; }
+    public String getEnd() { return end; }
 }

@@ -9,32 +9,28 @@ public class Deadline extends Task {
 
     protected String due;
 
-
     public Deadline(String description, String due) throws Excep {
         super(description);
-        try{
+        try {
             LocalDateTime time = DateTimeTool.parseDateTime(due);
             this.due = DateTimeTool.formatDateTime(time);
-        }catch (Excep e){
+        } catch (Excep e) {
             System.out.println(e.getMessage());
             this.due = due;
         }
     }
 
-
-
     @Override
     public String toString() {
-        return "["+taskName()+"]" + super.toString() + " (by: " + due + ")";
+        return "[" + taskName() + "]" + super.toString() + " (by: " + due + ")";
     }
 
     @Override
-    public String taskName(){return "D";}
+    public String taskName() { return "D"; }
 
-    public String getDue(){return due;}
+    public String getDue() { return due; }
 
-
-    public static Deadline taskToDeadline(String task) throws Excep{
+    public static Deadline taskToDeadline(String task) throws Excep {
         if (task.isEmpty()) {
             throw new Excep("no deadline i also want");
         } else if (!task.contains("by")) {
@@ -44,11 +40,10 @@ public class Deadline extends Task {
         String text = temp[0];
         String tempdl = temp[1];
         String dl = tempdl.substring(3);
-        return new Deadline(text,dl);
+        return new Deadline(text, dl);
     }
 
-    public String toTask(){
-        return this.getDescription() + " /by "+this.getDue();
+    public String toTask() {
+        return this.getDescription() + " /by " + this.getDue();
     }
-
 }
