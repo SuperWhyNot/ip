@@ -53,6 +53,8 @@ public class Parser {
         } else if (tag.equalsIgnoreCase("deadline")) {
             Deadline deadline = Deadline.taskToDeadline(taskStr);
             cmd = new DeadlineCommand(deadline);
+        } else if (tag.equalsIgnoreCase("find")) {
+            cmd = new FindCommand(taskStr);
         } else {
             throw new Excep("Wrong command");
         }
