@@ -30,7 +30,7 @@ public class DeleteCommand extends Command {
      */
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) throws Exception {
-        if (idx < 1 || idx >= tasks.size()) {
+        if (idx < 0 || idx >= tasks.size()) {
             throw new Excep("no such task number");
         }
         Task t = tasks.get(idx);
