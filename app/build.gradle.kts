@@ -7,6 +7,7 @@
  */
 
 import org.gradle.external.javadoc.StandardJavadocDocletOptions
+version = "0.1"
 
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
@@ -58,4 +59,12 @@ tasks.javadoc {
 
     // Include all Java files in the jack package
     source = sourceSets["main"].allJava
+}
+
+tasks.jar {
+    archiveFileName.set("Jack-v"+version+".jar")
+    manifest {
+        attributes["Main-Class"] = "jack.Jack"
+    }
+
 }
