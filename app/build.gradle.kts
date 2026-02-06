@@ -12,6 +12,8 @@ version = "0.1"
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     application
+    // Apply CheckStyle plugin
+    checkstyle
 }
 
 repositories {
@@ -67,4 +69,16 @@ tasks.jar {
         attributes["Main-Class"] = "jack.Jack"
     }
 
+}
+
+// Configure CheckStyle
+checkstyle {
+    toolVersion = "11.0.0"
+    configFile = file("${project.rootDir}/config/checkstyle/checkstyle.xml")
+}
+
+// Add CheckStyle task to build lifecycle
+tasks.build {
+    dependsOn(tasks.checkstyleMain)
+    dependsOn(tasks.checkstyleTest)
 }
