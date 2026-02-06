@@ -15,6 +15,8 @@ plugins {
     application
 
     id("org.openjfx.javafxplugin") version "0.0.14"
+    // Apply CheckStyle plugin
+    checkstyle
 }
 
 repositories {
@@ -85,4 +87,16 @@ tasks.jar {
         attributes["Main-Class"] = "jack.Launcher"
     }
 
+}
+
+// Configure CheckStyle
+checkstyle {
+    toolVersion = "11.0.0"
+    configFile = file("${project.rootDir}/config/checkstyle/checkstyle.xml")
+}
+
+// Add CheckStyle task to build lifecycle
+tasks.build {
+    dependsOn(tasks.checkstyleMain)
+    dependsOn(tasks.checkstyleTest)
 }

@@ -2,20 +2,18 @@ package jack.ui;
 
 import jack.task.*;
 
-import java.util.ArrayList;
-
 /**
  * The user interface class for the Jack application.
  * Responsible for displaying messages to the user and handling user interactions.
  */
 public class Ui {
-    private static final String line = "____________________________________________________________";
+    private static final String LINE = "____________________________________________________________";
     
     /**
      * Displays a horizontal line separator.
      */
     public void showLine() {
-        System.out.println(line);
+        System.out.println(LINE);
     }
 
     /**
@@ -24,13 +22,13 @@ public class Ui {
      * @param todo The todo task that was added.
      */
     public String todo(TaskList list, ToDo todo) {
-        System.out.println(line);
+        System.out.println(LINE);
         String msg = "Got it. I've added this task:\n  " + todo;
         System.out.println(msg);
-        System.out.println(line);
+        System.out.println(LINE);
         String numMsg = "Now you have " + list.size() + " tasks in the list.";
         System.out.println(numMsg);
-        msg += "\n"+numMsg;
+        msg += "\n" + numMsg;
         return msg;
     }
 
@@ -40,13 +38,13 @@ public class Ui {
      * @param deadline The deadline task that was added.
      */
     public String deadline(TaskList list, Deadline deadline) {
-        System.out.println(line);
+        System.out.println(LINE);
         String msg = "Deadline task added: " + deadline + "\n " + deadline;
         System.out.println(msg);
-        System.out.println(line);
+        System.out.println(LINE);
         String numMsg = "Now you have " + list.size() + " tasks in the list.";
         System.out.println(numMsg);
-        msg += "\n"+numMsg;
+        msg += "\n" + numMsg;
         return msg;
     }
 
@@ -56,12 +54,12 @@ public class Ui {
      * @param event The event task that was added.
      */
     public String event(TaskList list, Event event) {
-        System.out.println(line);
+        System.out.println(LINE);
         String msg = "Got it. I've added this task:\n  " + event;
         System.out.println(msg);
         String numMsg = "Now you have " + list.size() + " tasks in the list.";
         System.out.println(numMsg);
-        msg += "\n"+numMsg;
+        msg += "\n" + numMsg;
         return msg;
     }
     
@@ -71,13 +69,13 @@ public class Ui {
      * @param t The task that was deleted.
      */
     public String delete(TaskList list, Task t) {
-        System.out.println(line);
+        System.out.println(LINE);
         String msg = "Noted. I've removed this task:\n  " + t;
         System.out.println(msg);
         String numMsg = "Now you have " + list.size() + " tasks in the list.";
         System.out.println(numMsg);
-        System.out.println(line);
-        msg += "\n"+numMsg;
+        System.out.println(LINE);
+        msg += "\n" + numMsg;
         return msg;
     }
 
@@ -85,10 +83,10 @@ public class Ui {
      * Displays a welcome message when the application starts.
      */
     public void welcome() {
-        System.out.println(line);
+        System.out.println(LINE);
         System.out.println("Hello I'm Jack");
         System.out.println("What can I do for you?");
-        System.out.println(line);
+        System.out.println(LINE);
     }
 
     /**
@@ -96,9 +94,9 @@ public class Ui {
      */
     public String displayBye() {
         String msg = "Bye. Hope to see you again soon!";
-        System.out.println(line);
+        System.out.println(LINE);
         System.out.println(msg);
-        System.out.println(line);
+        System.out.println(LINE);
         return msg;
     }
 
@@ -107,15 +105,15 @@ public class Ui {
      * @param list The task list to display.
      */
     public String list(TaskList list) {
-        System.out.println(line);
+        System.out.println(LINE);
         String msg = "Here are the tasks in your list:\n";
         System.out.println(msg);
         for (int j = 1; j <= list.size(); j++) {
             String taskMsg = j + "." + list.get(j - 1).toString();
-            msg += "\n"+taskMsg;
+            msg += "\n" + taskMsg;
             System.out.println(taskMsg);
         }
-        System.out.println(line);
+        System.out.println(LINE);
         return msg;
     }
     
@@ -123,7 +121,7 @@ public class Ui {
      * Displays a message when a task is marked as done.
      */
     public String mark() {
-        System.out.println(line);
+        System.out.println(LINE);
         String msg = "Nice! I've marked this task as done:\n";
         System.out.println(msg);
         return msg;
@@ -136,7 +134,7 @@ public class Ui {
     public String markSuccess(Task t) {
         String msg = "  " + t;
         System.out.println(msg);
-        System.out.println(line);
+        System.out.println(LINE);
         return msg;
     }
 
@@ -144,7 +142,7 @@ public class Ui {
      * Displays a message when a task is marked as not done.
      */
     public String unmark() {
-        System.out.println(line);
+        System.out.println(LINE);
         String msg = "OK, I've marked this task as not done yet:\n";
         System.out.println(msg);
         return msg;
@@ -157,7 +155,7 @@ public class Ui {
     public String unmarkSuccess(Task t) {
         String msg = "  " + t;
         System.out.println(msg);
-        System.out.println(line);
+        System.out.println(LINE);
         return msg;
     }
 
@@ -166,9 +164,9 @@ public class Ui {
      * @param massage The error message to display.
      */
     public void showError(String massage) {
-        System.out.println(line);
+        System.out.println(LINE);
         System.out.println(massage);
-        System.out.println(line);
+        System.out.println(LINE);
     }
 
     /**
@@ -177,7 +175,7 @@ public class Ui {
      * @param keyword The keyword to search for.
      */
     public String find(TaskList list, String keyword) {
-        System.out.println(line);
+        System.out.println(LINE);
         String msg = "Here are the matching tasks in your list:\n";
         System.out.println(msg);
         int count = 1;
@@ -189,7 +187,7 @@ public class Ui {
                 count++;
             }
         }
-        System.out.println(line);
+        System.out.println(LINE);
         return msg;
     }
 }

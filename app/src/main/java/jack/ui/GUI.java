@@ -35,11 +35,11 @@ public class GUI {
 
     private Stage stage;
 
-    public GUI(Stage _stage, TaskList _tasks, Ui _ui, Storage _storage) {
-        tasks = _tasks;
-        ui = _ui;
-        storage = _storage; 
-        this.stage = _stage;
+    public GUI(Stage stage, TaskList tasks, Ui ui, Storage storage) {
+        this.tasks = tasks;
+        this.ui = ui;
+        this.storage = storage;
+        this.stage = stage;
     }
 
     public void close() {
@@ -107,7 +107,7 @@ public class GUI {
         stage.setScene(scene);
 
         scene.widthProperty().addListener((obs, oldValue, newValue) -> {
-            inputField.setPrefWidth(inputArea.getWidth()-sendButton.getWidth());
+            inputField.setPrefWidth(inputArea.getWidth() - sendButton.getWidth());
         });
         stage.show();
 
