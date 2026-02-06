@@ -28,10 +28,10 @@ public class TodoCommand extends Command {
      * @throws Exception If an error occurs during execution, such as if the todo description is empty.
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws Exception {
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws Exception {
         ToDo todo = ToDo.taskToToDo(text);
         tasks.add(todo);
         storage.save(tasks);
-        ui.todo(tasks, todo);
+        return ui.todo(tasks, todo);
     }
 }

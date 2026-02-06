@@ -29,14 +29,14 @@ public class MarkCommand extends Command {
      * @throws Exception If the task index is invalid or an error occurs during execution.
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws Exception {
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws Exception {
         if (idx < 1 || idx >= tasks.size()) {
             throw new Excep("no such task number");
         }
         Task t = tasks.get(idx);
-        ui.mark();
+        String msg = ui.mark();
         t.mark();
         storage.save(tasks);
-        ui.markSuccess(t);
+        return msg + ui.markSuccess(t);
     }
 }

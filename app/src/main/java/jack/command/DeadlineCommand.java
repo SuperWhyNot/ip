@@ -28,9 +28,9 @@ public class DeadlineCommand extends Command {
      * @throws Exception If an error occurs during execution.
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws Exception {
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws Exception {
         tasks.add(deadline);
         storage.save(tasks);
-        ui.deadline(tasks, deadline);
+        return ui.deadline(tasks, deadline);
     }
 }

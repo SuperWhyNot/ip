@@ -10,7 +10,7 @@ public class FindCommand extends Command{
         this.keyword=keyword;
     }
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws Exception {
-        ui.find(tasks,keyword);
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws Exception {
+        return ui.find(tasks,keyword);
     }
 }

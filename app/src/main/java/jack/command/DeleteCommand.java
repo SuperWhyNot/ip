@@ -29,13 +29,13 @@ public class DeleteCommand extends Command {
      * @throws Exception If the task index is invalid or an error occurs during execution.
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws Exception {
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws Exception {
         if (idx < 0 || idx >= tasks.size()) {
             throw new Excep("no such task number");
         }
         Task t = tasks.get(idx);
         tasks.remove(idx);
         storage.save(tasks);
-        ui.delete(tasks, t);
+        return ui.delete(tasks, t);
     }
 }

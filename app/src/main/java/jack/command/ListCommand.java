@@ -17,7 +17,7 @@ public class ListCommand extends Command {
      * @throws Exception If an error occurs during execution.
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws Exception {
-        ui.list(tasks);
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws Exception {
+        return ui.list(tasks);
     }
 }

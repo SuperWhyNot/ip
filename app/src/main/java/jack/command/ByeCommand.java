@@ -18,8 +18,8 @@ public class ByeCommand extends Command {
      */
 
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws Exception {
-        ui.bye();
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws Exception {
         this.isExit = true;
+        return ui.displayBye();
     }
 }

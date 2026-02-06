@@ -10,8 +10,11 @@ import org.gradle.external.javadoc.StandardJavadocDocletOptions
 version = "0.1"
 
 plugins {
+    java
     // Apply the application plugin to add support for building a CLI application in Java.
     application
+
+    id("org.openjfx.javafxplugin") version "0.0.14"
 }
 
 repositories {
@@ -22,7 +25,22 @@ repositories {
 dependencies {
     // This dependency is used by the application.
     implementation(libs.guava)
+    
+    val javaFxVersion = "17.0.9"
+    implementation(group = "org.openjfx", name = "javafx-base", version = javaFxVersion, classifier = "win")
+    implementation(group = "org.openjfx", name = "javafx-base", version = javaFxVersion, classifier = "mac-aarch64")
+    implementation(group = "org.openjfx", name = "javafx-base", version = javaFxVersion, classifier = "linux")
+    implementation(group = "org.openjfx", name = "javafx-controls", version = javaFxVersion, classifier = "win")
+    implementation(group = "org.openjfx", name = "javafx-controls", version = javaFxVersion, classifier = "mac-aarch64")
+    implementation(group = "org.openjfx", name = "javafx-controls", version = javaFxVersion, classifier = "linux")
+    implementation(group = "org.openjfx", name = "javafx-fxml", version = javaFxVersion, classifier = "win")
+    implementation(group = "org.openjfx", name = "javafx-fxml", version = javaFxVersion, classifier = "mac-aarch64")
+    implementation(group = "org.openjfx", name = "javafx-fxml", version = javaFxVersion, classifier = "linux")
+    implementation(group = "org.openjfx", name = "javafx-graphics", version = javaFxVersion, classifier = "win")
+    implementation(group = "org.openjfx", name = "javafx-graphics", version = javaFxVersion, classifier = "mac-aarch64")
+    implementation(group = "org.openjfx", name = "javafx-graphics", version = javaFxVersion, classifier = "linux")
 }
+
 
 testing {
     suites {
@@ -43,7 +61,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = "jack.Jack"
+    mainClass = "jack.Launcher"
 }
 tasks.run {
     standardInput = System.`in`
@@ -64,7 +82,7 @@ tasks.javadoc {
 tasks.jar {
     archiveFileName.set("Jack-v"+version+".jar")
     manifest {
-        attributes["Main-Class"] = "jack.Jack"
+        attributes["Main-Class"] = "jack.Launcher"
     }
 
 }

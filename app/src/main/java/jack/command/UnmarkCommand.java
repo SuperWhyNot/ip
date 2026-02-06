@@ -29,14 +29,14 @@ public class UnmarkCommand extends Command {
      * @throws Exception If the task index is invalid or an error occurs during execution.
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws Exception {
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws Exception {
         if (idx < 1 || idx >= tasks.size()) {
             throw new Excep("no such task number");
         }
         Task t = tasks.get(idx);
-        ui.unmark();
+        String msg = ui.unmark();
         t.unmark();
         storage.save(tasks);
-        ui.unmarkSuccess(t);
+        return msg + ui.unmarkSuccess(t);
     }
 }

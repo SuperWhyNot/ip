@@ -1,7 +1,13 @@
 # IDEA files
-/.idea/
+.idea/
 /out/
 /*.iml
+
+#vscode files
+.vscode/
+
+#vim files
+*.swp
 
 # Gradle build files
 /.gradle/
@@ -26,3 +32,6 @@ build
 
 # Ignore Kotlin plugin data
 .kotlin
+
+# javafx
+javafx-cache/
