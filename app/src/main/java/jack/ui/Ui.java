@@ -82,11 +82,12 @@ public class Ui {
     /**
      * Displays a welcome message when the application starts.
      */
-    public void welcome() {
+    public String welcome() {
         System.out.println(LINE);
-        System.out.println("Hello I'm Jack");
-        System.out.println("What can I do for you?");
+        String msg = "Hello I'm Jack\nWhat can I do for you?";
+        System.out.println(msg);
         System.out.println(LINE);
+        return msg;
     }
 
     /**

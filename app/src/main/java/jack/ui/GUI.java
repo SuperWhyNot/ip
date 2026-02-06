@@ -110,7 +110,7 @@ public class GUI {
             inputField.setPrefWidth(inputArea.getWidth() - sendButton.getWidth());
         });
         stage.show();
-
+        generateResponseMessageBox(ui.welcome());
     }
 
     public void generateMessageBox(String msg) {
