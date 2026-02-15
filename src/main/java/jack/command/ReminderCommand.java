@@ -65,7 +65,7 @@ public class ReminderCommand extends Command {
         List<TaskWithDueDate> upcomingTasks = new ArrayList<>();
 
         for (int i = 0; i < tasks.size(); i++) {
-            jack.task.Task task = tasks.get(i);
+            Task task = tasks.get(i);
             if (task.isDone()) {
                 continue;
             }
