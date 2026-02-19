@@ -51,7 +51,7 @@ public class ToDo extends Task {
     public static ToDo taskToToDo(String text) throws Excep {
         assert text != null : "Text cannot be null";
         if (text.isEmpty()) {
-            throw new Excep("nothing todo i also want");
+            throw new Excep("todo description cannot be empty");
         }
         return new ToDo(text);
     }

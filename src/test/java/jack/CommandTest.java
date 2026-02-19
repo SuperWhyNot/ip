@@ -57,7 +57,7 @@ public class CommandTest {
             Excep exception = assertThrows(Excep.class, () -> {
                 command.execute(tasks, ui, storage);
             });
-            assertEquals("nothing todo i also want", exception.getMessage());
+            assertEquals("todo description cannot be empty", exception.getMessage());
         } finally {
             // Clean up: delete test data file
             File testFile = new File("./test_duke.txt");

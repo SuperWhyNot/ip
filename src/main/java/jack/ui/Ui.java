@@ -271,15 +271,21 @@ public class Ui {
         } else if (lower.contains("wrong command") || lower.contains("unsupported")) {
             return "Sorry, I don't understand that command yet!\n"
                 + "Try: todo, deadline, event, list, mark, unmark, delete, find";
-        } else if (lower.contains("index") || lower.contains("number")) {
-            return "Please enter a valid task number!\n"
+        } else if (lower.contains("invalid task") || lower.contains("task number")) {
+            return "Oops! That's not a valid task number.\n"
+                + errorMsg + "\n"
                 + "You can type 'list' to see all your tasks. ";
-        } else if (lower.contains("deadline") || lower.contains("format")) {
-            return "Oops! Wrong format there!\n"
-                + "Try: deadline <task> /by <date>";
-        } else if (lower.contains("event")) {
-            return "Let me help you with the format!\n"
-                + "Try: event <name> /from <start> /to <end>";
+        } else if (lower.contains("deadline") && lower.contains("format")) {
+            return "Let me help you with the deadline format!\n"
+                + "Try: deadline <description> /by <date>\n"
+                + "Example: deadline submit report /by 2024-12-25 18:00";
+        } else if (lower.contains("event") && lower.contains("format")) {
+            return "Let me help you with the event format!\n"
+                + "Try: event <name> /from <start> /to <end>\n"
+                + "Example: event party /from 2024-12-25 18:00 /to 2024-12-26 00:00";
+        } else if (lower.contains("data file") || lower.contains("file")) {
+            return "I'm having trouble with the data file!\n"
+                + "Make sure the ./data folder exists and is writable. ";
         }
         return "Hmm, something went wrong there.\n"
             + errorMsg + "\nDon't worry, let's try again! ";

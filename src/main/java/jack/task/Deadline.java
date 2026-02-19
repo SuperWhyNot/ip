@@ -64,9 +64,9 @@ public class Deadline extends Task {
      */
     public static Deadline taskToDeadline(String task) throws Excep {
         if (task.isEmpty()) {
-            throw new Excep("no deadline i also want");
-        } else if (!task.contains("by")) {
-            throw new Excep("wrong format");
+            throw new Excep("deadline description cannot be empty");
+        } else if (!task.contains("/by")) {
+            throw new Excep("wrong deadline format");
         }
         String[] temp = task.split(" /", 2);
         String text = temp[0];

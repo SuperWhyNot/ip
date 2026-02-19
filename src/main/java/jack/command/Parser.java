@@ -37,7 +37,7 @@ public class Parser {
     public static Command parse(String userInput, TaskList previousState) throws Excep {
         assert userInput != null : "User input cannot be null";
         if (userInput == null || userInput.trim().isEmpty()) {
-            throw new Excep("unsupported command");
+            throw new Excep("empty command");
         }
 
         Matcher matcher = COMMAND_PATTERN.matcher(userInput);

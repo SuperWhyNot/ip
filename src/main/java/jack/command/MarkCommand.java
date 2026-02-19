@@ -30,8 +30,8 @@ public class MarkCommand extends Command {
      */
     @Override
     public String execute(TaskList tasks, Ui ui, Storage storage) throws Excep {
-        if (idx < 1 || idx >= tasks.size()) {
-            throw new Excep("no such task number");
+        if (idx < 0 || idx >= tasks.size()) {
+            throw new Excep("Invalid task number. You have " + tasks.size() + " tasks.");
         }
         Task t = tasks.get(idx);
         String msg = ui.mark();

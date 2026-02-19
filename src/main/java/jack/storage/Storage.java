@@ -78,7 +78,7 @@ public class Storage {
 
         boolean isCreated = storageFile.createNewFile();
         if (!isCreated) {
-            throw new Excep("Create File Fail");
+            throw new Excep("Could not create data file");
         }
     }
 

@@ -60,9 +60,9 @@ public class Event extends Task {
      */
     public static Event taskToEvent(String task) throws Excep {
         if (task.isEmpty()) {
-            throw new Excep("no event i also want");
-        } else if (!task.contains("from") || (!task.contains("to"))) {
-            throw new Excep("wrong format");
+            throw new Excep("event description cannot be empty");
+        } else if (!task.contains("/from") || !task.contains("/to")) {
+            throw new Excep("wrong event format");
         }
         String[] temp = task.split(" /", 3);
         String text = temp[0];
