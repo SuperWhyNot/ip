@@ -65,7 +65,7 @@ Shows the full list of `tasks`.
 
 Format: `list`
 
-Example:`list` `deadline CS2101 CA2 /by 01/03/2026`
+Example:`list`
 
 Successful usage will produce a acknowlegement prompt
 
@@ -189,4 +189,4 @@ Come back soon, okay?
 
 ## Saving
 
-The chatbot will forever remembember your tasks - even if u close it provided you close it properly. Killing the program manually (i.e. without inputting `bye` will cause the chatbot to forget about all the task since the ssame session that you opened the program.
+The chatbot will forever remembember your tasks - even if u close it, provided you close it properly. Killing the program manually (i.e. without inputting `bye`) will cause the chatbot to forget about all the commands in that session.
