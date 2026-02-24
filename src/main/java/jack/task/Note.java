@@ -94,7 +94,7 @@ public class Note extends Task {
      */
     public static Note taskToNote(String task) throws Excep {
         if (task.isEmpty()) {
-            throw new Excep("no deadline i also want");
+            throw new Excep("note description cannot be empty");
         } else if (!task.contains("by")) {
             throw new Excep("wrong format");
         }
