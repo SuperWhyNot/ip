@@ -95,8 +95,9 @@ public class Note extends Task {
     public static Note taskToNote(String task) throws Excep {
         if (task.isEmpty()) {
             throw new Excep("note description cannot be empty");
-        } else if (!task.contains("/by")) {
-            throw new Excep("wrong note format");
+        }
+        if (!task.contains("/by")) {
+            return new Note(task.trim());
         }
         String[] temp = task.split("/by", 2);
         String text = temp[0].trim();
@@ -104,7 +105,7 @@ public class Note extends Task {
             throw new Excep("wrong note format");
         }
         String datetime = temp[1].trim();
-        if (datetime.isEmpty()) {
+        if (datetime.isEmpty() || datetime.contains("/by")) {
             throw new Excep("wrong note format");
         }
         return new Note(text, DateTimeTool.parseDateTime(datetime));

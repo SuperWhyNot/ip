@@ -82,10 +82,7 @@ public class Parser {
                 cmd = new UndoCommand();
                 break;
             case "note":
-                if (commandArgs.isEmpty()) {
-                    throw new Excep("Note content cannot be empty");
-                }
-                cmd = new NoteCommand(new Note(commandArgs));
+                cmd = new NoteCommand(Note.taskToNote(commandArgs));
                 break;
             case "notes":
                 cmd = new ListNotesCommand();
