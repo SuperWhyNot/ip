@@ -68,6 +68,9 @@ public class Deadline extends Task {
             throw new Excep("wrong deadline format");
         }
         String deadline = temp[1].trim();
+        if (deadline.isEmpty()) {
+            throw new Excep("wrong deadline format");
+        }
         return new Deadline(text, deadline);
     }
 
