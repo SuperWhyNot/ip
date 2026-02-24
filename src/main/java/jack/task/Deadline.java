@@ -19,13 +19,9 @@ public class Deadline extends Task {
      * @param due The due date of the deadline task.
      * @throws Excep If there is an error parsing the due date.
      */
-    public Deadline(String description, String due) throws Excep {
+    public Deadline(String description, LocalDateTime due) {
         super(description);
-        try {
-            this.due = DateTimeTool.parseDateTime(due);
-        } catch (Exception e) {
-            throw new Excep("wrong deadline format");
-        }
+        this.due = due;
     }
 
     @Override
@@ -59,19 +55,16 @@ public class Deadline extends Task {
         } else if (!task.contains("/by")) {
             throw new Excep("wrong deadline format");
         }
-        String[] temp = task.split("/by");
-        if (temp.length != 2) {
-            throw new Excep("wrong deadline format");
-        }
+        String[] temp = task.split("/by", 2);
         String text = temp[0].trim();
         if (text.isEmpty()) {
             throw new Excep("wrong deadline format");
         }
         String deadline = temp[1].trim();
-        if (deadline.isEmpty()) {
+        if (deadline.isEmpty() || deadline.contains("/by")) {
             throw new Excep("wrong deadline format");
         }
-        return new Deadline(text, deadline);
+        return new Deadline(text, DateTimeTool.parseDateTime(deadline));
     }
 
     @Override

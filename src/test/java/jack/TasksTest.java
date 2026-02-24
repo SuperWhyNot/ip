@@ -21,13 +21,14 @@ public class TasksTest {
 
 
             // deadline
-            Deadline deadline = new Deadline("deadline", "30/1/2026 1800");
+            Deadline deadline = new Deadline("deadline", DateTimeTool.parseDateTime("30/1/2026 1800"));
             assertEquals("[D][ ] deadline (by: Jan 30 2026 6PM)", deadline.toString());
-            deadline = new Deadline("deadline", "30/1/2026 1801");
+            deadline = new Deadline("deadline", DateTimeTool.parseDateTime("30/1/2026 1801"));
             assertEquals("[D][ ] deadline (by: Jan 30 2026 6.01PM)", deadline.toString());
 
             // event
-            Event event = new Event("event", "30/1/2026 1800", "30/1/2026 1801");
+            Event event = new Event("event", DateTimeTool.parseDateTime("30/1/2026 1800"),
+                    DateTimeTool.parseDateTime("30/1/2026 1801"));
             assertEquals("[E][ ] event (from: Jan 30 2026 6PM to: Jan 30 2026 6.01PM)", event.toString());
         } catch (RuntimeException | Excep e) {
             throw new RuntimeException(e);

@@ -20,14 +20,10 @@ public class Event extends Task {
      * @param end The end time of the event task.
      * @throws Excep If there is an error parsing the start or end time.
      */
-    public Event(String description, String start, String end) throws Excep {
+    public Event(String description, LocalDateTime start, LocalDateTime end) {
         super(description);
-        try {
-            this.start = DateTimeTool.parseDateTime(start);
-            this.end = DateTimeTool.parseDateTime(end);
-        } catch (Exception e) {
-            throw new Excep("wrong event format");
-        }
+        this.start = start;
+        this.end = end;
     }
 
     @Override
@@ -81,13 +77,7 @@ public class Event extends Task {
         if (toTime.isBefore(fromTime)) {
             throw new Excep("/from cannot be later than /to time");
         }
-        try {
-            DateTimeTool.parseDateTime(fromStr);
-            DateTimeTool.parseDateTime(toStr);
-        } catch (Exception e) {
-            throw new Excep("wrong event format");
-        }
-        return new Event(text, fromStr, toStr);
+        return new Event(text, fromTime, toTime);
     }
 
     @Override
